@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head><title>CTF Challenge</title></head>
+<body>
+  <h1>Reflected XSS Challenge</h1>
+  <p>Search: <input id="q" value="<% = request.getParameter('q') %>"></p>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById('q').value = params.get('q') || '';
+  </script>
+</body>
+</html>
